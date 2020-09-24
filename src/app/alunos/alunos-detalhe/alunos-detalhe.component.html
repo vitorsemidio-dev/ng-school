@@ -1,0 +1,30 @@
+<h5>
+  Dados do aluno
+</h5>
+
+<div class="card border-info text-info mb-3" style="max-width: 18rem;">
+  <div class="card-header">
+    {{ aluno?.nome }} #{{ aluno?.id }}
+  </div>
+  <div class="card-body ">
+    <h5 class="card-title">Sobre mim</h5>
+    <p class="card-text">
+      {{ aluno?.descricao }}
+    </p>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      {{ aluno?.email }}
+    </li>
+    <li class="list-group-item">
+      {{ aluno?.endereco }}
+    </li>
+    <!-- <li class="list-group-item">
+      {{ aluno?.email }}
+    </li> -->
+  </ul>
+  <div class="card-footer">
+    <a [routerLink]="['editar']" class=" btn btn-sm btn-warning">Editar</a>
+  </div>
+</div>

@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body, app-root {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+// body {
+//   background-color: aqua;
+// }
+
+app-root {
+  background-color: darkcyan;
+}
