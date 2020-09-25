@@ -1,0 +1,12 @@
+.listagem-aulas {
+  display: flex;
+  flex: 1 1 200px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  > div {
+    padding: 0 8px;
+    max-width: 250px;
+  }
+
+}

@@ -30,7 +30,9 @@ export class CursosDetalheComponent implements OnInit, OnDestroy {
     this.inscricao = this.activatedRoute.params.subscribe(params => {
       const id = params.id;
       this.curso = this.cursosService.getCurso(id);
-      this.alunoMatriculado = this.matriculaService.verificarAlunoLogadoInscrito(id);
+      if (this.curso) {
+        this.alunoMatriculado = this.matriculaService.verificarAlunoLogadoInscrito(id);
+      }
     });
   }
 

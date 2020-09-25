@@ -1,3 +1,4 @@
+import { AulasComponent } from './aulas/aulas.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -7,7 +8,9 @@ import { CursosComponent } from './cursos.component';
 
 const routes: Routes = [
   { path: '', component: CursosComponent, children: [
-    { path: ':id', component: CursosDetalheComponent, canActivate: [CursosGuard] },
+    { path: ':id', component: CursosDetalheComponent, canActivate: [CursosGuard], children: [
+      { path: 'aulas', component: AulasComponent, canActivate: [CursosGuard] },
+    ] },
   ] },
 ];
 

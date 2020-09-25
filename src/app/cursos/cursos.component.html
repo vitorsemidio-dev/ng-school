@@ -4,13 +4,13 @@
   <article class="lista-cursos">
     <div *ngFor="let curso of cursos" class="card mb-3" style="max-width: 540px;">
       <div class="row no-gutters">
-        <div class="col-md-4">
+        <div class="col-4">
           <img
             src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/{{ curso.nome.toLowerCase() + '/' + curso.nome.toLowerCase() + '.png' }}"
             class="card-img"
-            alt="...">
+            [alt]="curso.nome">
         </div>
-        <div class="col-md-8">
+        <div class="col-8">
           <div class="card-body">
             <h5 class="card-title">
               {{ curso?.nome }}
@@ -20,6 +20,29 @@
             </p>
             <p class="card-text"><small class="text-muted">
               10 alunos inscritos <a [routerLink]="[curso.id]">Acessar curso</a>
+            </small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row no-gutters">
+        <div class="col-4">
+          <img
+            src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/vue/vue.png"
+            class="card-img"
+            alt="fake">
+        </div>
+        <div class="col-8">
+          <div class="card-body">
+            <h5 class="card-title">
+              fake
+            </h5>
+            <p class="card-text">
+              fake
+            </p>
+            <p class="card-text"><small class="text-muted">
+              10 alunos inscritos <a [routerLink]="[5]">Acessar curso</a>
             </small></p>
           </div>
         </div>

@@ -2,25 +2,52 @@
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
-        <a class="nav-link active"> Apresentação </a>
+        <a class="nav-link active">
+          Apresentação
+        </a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a
+          [routerLink]="['aulas']"
+          [routerLinkActive]="'active'"
           class="nav-link"
           [ngClass]="{ disabled: !alunoMatriculado }"
           [attr.aria-disabled]="!alunoMatriculado"
           [tabindex]="!alunoMatriculado ? -1 : 1"
           >Aulas</a
         >
-      </li>
+      </li> -->
     </ul>
   </div>
+
+  <div *ngIf="!curso; then cursoInexistente; else matriculadoTemplate"></div>
+</div>
+
+<ng-template #matriculadoTemplate>
+  <div
+    *ngIf="alunoMatriculado; else naoMatriculadoTemplate"
+    class="card-body card-body-centralizado"
+  >
+    <h5>
+      Bem vindo ao curso de <strong>{{ curso.nome }}</strong>
+    </h5>
+    <div role="alert" class="alert alert-primary">
+      Olá, caríssimo aluno. As aulas de <strong>{{ curso.nome }}</strong> já
+      estão liberadas para você.
+    </div>
+    <a [routerLink]="['aulas']" class="btn btn-primary mb-3">
+      Assistir as aulas agora
+    </a>
+    <article style="max-width: 1200px">
+      <router-outlet></router-outlet>
+    </article>
+  </div>
+</ng-template>
+
+<ng-template #naoMatriculadoTemplate>
   <div class="card-body card-body-centralizado">
     <h5 class="card-title">Olá, caríssimo aluno.</h5>
-    <div
-      class="alert alert-warning alert-aluno-nao-matriculado"
-      role="alert"
-    >
+    <div class="alert alert-warning alert-aluno-nao-matriculado" role="alert">
       Infelizmente notamos que você ainda não está matrículada no curso e por
       essa razão não poderá assistir as aulas ainda. Mas logo abaixo temos o
       botão de matrícula.
@@ -29,4 +56,13 @@
       Clique aqui para se matricular
     </a>
   </div>
-</div>
+</ng-template>
+
+<ng-template #cursoInexistente>
+  <div class="card-body card-body-centralizado">
+    <div class="alert alert-danger alert-curso-nao-encontrado">
+      Tentamos buscar o curso, mas infelizmente não obtivemos sucesso. Tente
+      novamente mais tarde que iremos averiguar o problema.
+    </div>
+  </div>
+</ng-template>

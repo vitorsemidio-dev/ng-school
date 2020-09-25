@@ -6,10 +6,11 @@ import { CursosComponent } from './cursos.component';
 import { CursosDetalheComponent } from './cursos-detalhe/cursos-detalhe.component';
 import { CursosService } from './cursos.service';
 import { CursosGuard } from './cursos.guard';
+import { AulasComponent } from './aulas/aulas.component';
 
 
 @NgModule({
-  declarations: [CursosComponent, CursosDetalheComponent],
+  declarations: [CursosComponent, CursosDetalheComponent, AulasComponent],
   imports: [
     CommonModule,
     CursosRoutingModule
