@@ -42,3 +42,4 @@
 ## Links
 
 - [ng-template](https://blog.angular-university.io/angular-ng-template-ng-container-ngtemplateoutlet/)
+- [eslint Angular](https://github.com/angular-eslint/angular-eslint)

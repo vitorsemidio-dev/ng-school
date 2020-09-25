@@ -1,6 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" [routerLink]="['/']">Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#schoolMenuDropdown" aria-controls="schoolMenuDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#schoolMenuDropdown"
+    aria-controls="schoolMenuDropdown"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="schoolMenuDropdown">
@@ -9,7 +17,13 @@
         <a class="nav-link" [routerLink]="['/login']">Login</a>
       </li>
       <li *ngIf="isAlunoLogado" [routerLinkActive]="'active'" class="nav-item">
-        <a class="nav-link" role="button" (click)="fazerLogout()" [routerLink]="['/login']">Logout</a>
+        <a
+          class="nav-link"
+          role="button"
+          (click)="fazerLogout()"
+          [routerLink]="['/login']"
+          >Logout</a
+        >
       </li>
       <li [routerLinkActive]="'active'" class="nav-item">
         <a class="nav-link" [routerLink]="['/cursos']">Cursos</a>
@@ -17,8 +31,6 @@
       <li [routerLinkActive]="'active'" class="nav-item">
         <a class="nav-link" [routerLink]="['/alunos']">Alunos</a>
       </li>
-
-
     </ul>
   </div>
 </nav>
