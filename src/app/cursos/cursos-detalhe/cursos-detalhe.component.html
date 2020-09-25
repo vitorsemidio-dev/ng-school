@@ -1,1 +1,32 @@
-<p>cursos-detalhe works!</p>
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link active"> Apresentação </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [ngClass]="{ disabled: !alunoMatriculado }"
+          [attr.aria-disabled]="!alunoMatriculado"
+          [tabindex]="!alunoMatriculado ? -1 : 1"
+          >Aulas</a
+        >
+      </li>
+    </ul>
+  </div>
+  <div class="card-body card-body-centralizado">
+    <h5 class="card-title">Olá, caríssimo aluno.</h5>
+    <div
+      class="alert alert-warning alert-aluno-nao-matriculado"
+      role="alert"
+    >
+      Infelizmente notamos que você ainda não está matrículada no curso e por
+      essa razão não poderá assistir as aulas ainda. Mas logo abaixo temos o
+      botão de matrícula.
+    </div>
+    <a role="button" (click)="matricularAluno()" class="btn btn-primary">
+      Clique aqui para se matricular
+    </a>
+  </div>
+</div>

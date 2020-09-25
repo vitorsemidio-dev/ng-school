@@ -1,26 +1,29 @@
+import { FakeDbService } from './../services/fake-db.service';
 import { Injectable } from '@angular/core';
 
-import { Aluno } from './aluno.model';
+import { Aluno } from '../models/aluno.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlunosService {
-  private alunos: Aluno[] = [
-    { id: 1, nome: 'Ana', descricao: 'Desenvolvedora apaixonada por Vue', email: 'ana@email', endereco: 'Sao Paulo - SP' },
-    { id: 2, nome: 'Bernardo', descricao: 'Criador de conteudo', email: 'bernardo@email', endereco: 'Sao Paulo - SP' },
-    { id: 3, nome: 'Carol', descricao: 'Crio videos sobre minhas experiências diárias', email: 'Carol@email', endereco: 'Sao Paulo - SP' },
-    { id: 4, nome: 'Diego', descricao: 'Desenvolvedor mobile iOS', email: 'Diego@email', endereco: 'Sao Paulo - SP' },
-  ];
+  private alunos: Aluno[];
 
-  constructor() { }
+  constructor(
+    private fakeDbService: FakeDbService,
+  ) { }
 
   getAlunos() {
-    return this.alunos;
+    return this.fakeDbService.getAlunos();
   }
 
-  getAluno(id: number) {
-    const alunoEncontrado = this.alunos.find(aluno => aluno.id == id);
+  getAluno(id: string) {
+    const alunoEncontrado = this.fakeDbService.getAlunoById(id);
+    return alunoEncontrado;
+  }
+
+  getAlunoByEmail(email: string) {
+    const alunoEncontrado = this.fakeDbService.getAlunoByEmail(email);
     return alunoEncontrado;
   }
 }

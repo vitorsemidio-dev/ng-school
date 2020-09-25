@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
   }
 
   entrar() {
-    console.log('entrar');
     this.authService.fazerLogin(this.loginForm.value);
   }
 

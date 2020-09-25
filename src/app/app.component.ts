@@ -26,7 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   seInscreverAutenticacao() {
-    this.inscricao = this.authService.emissorUsuarioLogado.subscribe(isUsuarioLogado => {
+    this.inscricao = this.authService.emissorAlunoLogado$.subscribe(isUsuarioLogado => {
       this.isUsuarioLogado = isUsuarioLogado;
     });
   }

@@ -1,27 +1,33 @@
-import { Curso } from './curso.model';
+import { MatriculaService } from './../services/matricula.service';
 import { Injectable } from '@angular/core';
+
+import { Curso } from '../models/curso.model';
+import { FakeDbService } from './../services/fake-db.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CursosService {
 
-  private cursos: Curso[] = [
-    { id: 1, nome: 'Angular', descricao: '' },
-    { id: 2, nome: 'Java', descricao: '' },
-    { id: 3, nome: 'React', descricao: '' },
-    { id: 4, nome: 'C', descricao: '' },
-  ];
+  private cursos: Curso[];
 
-  constructor() { }
+  constructor(
+    private fakeDbService: FakeDbService,
+    private matriculaService: MatriculaService,
+  ) { }
 
   getCursos() {
-    return this.cursos;
+    const cursos = this.fakeDbService.getCursos();
+    return cursos;
   }
 
-  getCurso(id: number) {
-    const cursoEncontrado = this.cursos.find(curso => curso.id === id);
+  getCurso(id: string) {
+    const cursoEncontrado = this.fakeDbService.getCursoById(id);
     return cursoEncontrado;
+  }
+
+  matricularAluno(curso: Curso) {
+    this.matriculaService.matricularAlunoLogado(curso);
   }
 
 }

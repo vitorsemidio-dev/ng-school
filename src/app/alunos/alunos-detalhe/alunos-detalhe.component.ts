@@ -1,8 +1,9 @@
-import { AlunosService } from './../alunos.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Aluno } from '../aluno.model';
+
+import { AlunosService } from './../alunos.service';
+import { Aluno } from '../../models/aluno.model';
 
 @Component({
   selector: 'app-alunos-detalhe',
@@ -12,7 +13,7 @@ import { Aluno } from '../aluno.model';
 export class AlunosDetalheComponent implements OnInit, OnDestroy {
 
   inscricao: Subscription;
-  id: number;
+  id: string;
   aluno: Aluno;
 
   constructor(

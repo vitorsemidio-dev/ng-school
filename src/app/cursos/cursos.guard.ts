@@ -1,3 +1,4 @@
+import { MatriculaService } from './../services/matricula.service';
 import { AuthService } from './../services/auth.service';
 import { CursosService } from './cursos.service';
 import { Injectable } from '@angular/core';
@@ -23,14 +24,16 @@ export class CursosGuard implements CanActivate, CanActivateChild, CanDeactivate
 
   constructor(
     private authService: AuthService,
+    private matriculaService: MatriculaService,
   ) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       console.log(next);
-      const id = Number(next.params.id);
-      return this.authService.verificarAlunoInscrito(id);
+      const id = next.params.id;
+      // return this.matriculaService.verificarAlunoLogadoInscrito(id);
+      return true;
   }
   canActivateChild(
     next: ActivatedRouteSnapshot,

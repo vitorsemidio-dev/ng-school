@@ -1,8 +1,10 @@
-import { Curso } from './../curso.model';
-import { CursosService } from './../cursos.service';
+import { MatriculaService } from './../../services/matricula.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+
+import { Curso } from '../../models/curso.model';
+import { CursosService } from './../cursos.service';
 
 @Component({
   selector: 'app-cursos-detalhe',
@@ -12,10 +14,12 @@ import { ActivatedRoute } from '@angular/router';
 export class CursosDetalheComponent implements OnInit, OnDestroy {
   inscricao: Subscription;
   curso: Curso;
+  alunoMatriculado = false;
 
   constructor(
     private cursosService: CursosService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private matriculaService: MatriculaService,
   ) { }
 
   ngOnInit(): void {
@@ -26,6 +30,7 @@ export class CursosDetalheComponent implements OnInit, OnDestroy {
     this.inscricao = this.activatedRoute.params.subscribe(params => {
       const id = params.id;
       this.curso = this.cursosService.getCurso(id);
+      this.alunoMatriculado = this.matriculaService.verificarAlunoLogadoInscrito(id);
     });
   }
 
@@ -33,6 +38,13 @@ export class CursosDetalheComponent implements OnInit, OnDestroy {
     if (this.inscricao) {
       this.inscricao.unsubscribe();
     }
+  }
+
+  matricularAluno() {
+    // dados aluno logado
+    this.alunoMatriculado = true;
+    console.log('aluno matriculado');
+    this.cursosService.matricularAluno(this.curso);
   }
 
 }
