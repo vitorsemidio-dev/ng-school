@@ -17,9 +17,7 @@ export class FakeDbService {
   private cursos: Curso[] = CURSOS;
   private matriculas: Matricula[] = MATRICULAS;
 
-  constructor(
-    // private authService: AuthService,
-  ) {}
+  constructor() {}
 
   getAlunos() {
     return this.alunos;
@@ -47,7 +45,6 @@ export class FakeDbService {
   getMatriculas() {
     return this.matriculas;
   }
-
 
   matricularAluno(aluno: Aluno, curso: Curso) {
     const alunoCheck = this.getAlunoById(aluno.id);
@@ -109,6 +106,18 @@ export class FakeDbService {
     );
 
     return isAlunoMatriculado;
+  }
+
+  buscarCursosDoAluno(aluno: Aluno) {
+    const idCursosDoAluno = this.matriculas
+      .filter((matricula) => matricula.idAlunosMatriculados.has(aluno.id))
+      .map((matricula) => matricula.idCurso);
+
+    const cursosDoAluno = idCursosDoAluno.map((idCurso) =>
+      this.getCursoById(idCurso)
+    );
+
+    return cursosDoAluno;
   }
 
   private encontrarCursoMatriculado(curso: Curso) {

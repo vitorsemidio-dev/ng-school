@@ -28,4 +28,11 @@ export class MatriculaService {
       this.fakeDbService.matricularAluno(alunoLogado, curso);
     }
   }
+
+  buscarCursosDoAluno(idAluno: string) {
+    const aluno  = this.fakeDbService.getAlunoById(idAluno);
+    const cursosDoAluno = this.fakeDbService.buscarCursosDoAluno(aluno);
+
+    return cursosDoAluno;
+  }
 }

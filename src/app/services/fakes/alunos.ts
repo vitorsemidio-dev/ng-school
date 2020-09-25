@@ -22,7 +22,7 @@ export const ALUNOS: Aluno[] = [
     nome: 'Carol',
     senha: '123456',
     descricao: 'Crio videos sobre minhas experiências diárias',
-    email: 'Carol@email',
+    email: 'carol@email',
     endereco: 'Sao Paulo - SP',
   },
   {
@@ -30,7 +30,15 @@ export const ALUNOS: Aluno[] = [
     nome: 'Diego',
     senha: '123456',
     descricao: 'Desenvolvedor mobile iOS',
-    email: 'Diego@email',
+    email: 'diego@email',
     endereco: 'Sao Paulo - SP',
+  },
+  {
+    id: '5',
+    nome: 'Emidio',
+    senha: '123456',
+    descricao: 'Desenvolvedor Full Stack',
+    email: 'emidio@email',
+    endereco: 'Rio de Janeiro - RJ',
   },
 ];

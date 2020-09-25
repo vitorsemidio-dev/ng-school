@@ -33,7 +33,11 @@
 
 [ ] Utilizar resolve
 
+## Templates
 
+[ ] Carregando
+[ ] Não encontrado
+[ ] Nenhum resultado
 
 ## Links
 

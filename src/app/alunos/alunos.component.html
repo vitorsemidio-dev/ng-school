@@ -1,29 +1,44 @@
-<div class="row">
-  <div class="col-6">
-    <p>
-      <a [routerLink]="['/alunos']">Alunos</a>
-      <a [routerLink]="['novo']" class="btn btn-sm btn-success">+</a>
-    </p>
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li *ngFor="let aluno of alunos" class="nav-item" role="presentation">
+        <a
+          [routerLink]="[aluno.id]"
+          class="nav-link"
+          [id]="'pills-aluno-tab' + aluno.id"
+          data-toggle="pill"
+          role="tab"
+          [attr.aria-controls]="'aluno-tab' + aluno.id"
+          aria-selected="true"
+        >
+          {{ aluno.nome }}
+        </a>
+      </li>
 
-
-    <div class="card" style="width: 18rem;">
-      <ul class="list-group list-group-flush">
-        <li *ngFor="let aluno of alunos" class="list-group-item">
-          {{ aluno.nome }} <a [routerLink]="[aluno.id]" class="btn btn-sm btn-info">Mais</a>
-        </li>
-        <!-- <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Vestibulum at eros</li> -->
-      </ul>
+      <!-- Fake: Aluno não existente -->
+      <li class="nav-item" role="presentation">
+        <a
+          [routerLink]="['10']"
+          class="nav-link"
+          [id]="'pills-aluno-tab' + '10'"
+          data-toggle="pill"
+          role="tab"
+          [attr.aria-controls]="'aluno-tab' + '10'"
+          aria-selected="true"
+        >
+          Fake
+        </a>
+      </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+      <div
+        class="tab-pane fade show active"
+        id="aluno-tab"
+        role="tabpanel"
+        aria-labelledby="aluno-tab"
+      >
+        <router-outlet></router-outlet>
+      </div>
     </div>
-
-    <!-- <div>
-      <a class="d-block" [routerLink]="['1']">Navegar para 1</a>
-      <a class="d-block" [routerLink]="['2']">Navegar para 2</a>
-      <a class="d-block" [routerLink]="['3']">Navegar para 3</a>
-    </div> -->
-  </div>
-
-  <div class="col-6">
-    <router-outlet></router-outlet>
   </div>
 </div>
