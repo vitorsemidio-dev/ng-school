@@ -35,9 +35,10 @@ export class AlunosDetalheComponent implements OnInit, OnDestroy {
 
   private inscricaoParams() {
     console.log(this.activeRouter);
-    this.inscricao = this.activeRouter.params.subscribe((param) => {
-      this.id = param.id;
+    this.inscricao = this.activeRouter.params.subscribe((params) => {
+      this.id = params.id;
       this.aluno = this.alunosService.getAluno(this.id);
+      this.alunosService.emitirAlunoSelecionado(this.id);
       if (this.aluno) {
         this.cursosMatriculado = this.buscarCursosDoAluno();
       } else {

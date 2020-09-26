@@ -10,7 +10,8 @@
           role="tab"
           [attr.aria-controls]="'aluno-tab' + aluno.id"
           aria-selected="true"
-        >
+          >
+          <!-- [attr.aria-selected]="aluno.id === idAlunoSelecionado" -->
           {{ aluno.nome }}
         </a>
       </li>
